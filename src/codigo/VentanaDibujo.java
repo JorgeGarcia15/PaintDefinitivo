@@ -583,7 +583,7 @@ public class VentanaDibujo extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -668,22 +668,22 @@ public class VentanaDibujo extends javax.swing.JFrame {
         if(evt.getButton() == evt.BUTTON1){
         switch (forma) {
             case 0:
-                listaFormas.add(new Circulo(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido, relleno));
+                listaFormas.add(new Circulo(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido, relleno, (int) jSpinner2.getValue()));
                 break;
             case 1:
-                listaFormas.add(new Triangulo(evt.getX(), evt.getY(),  jSlider1.getValue(), colorElegido, relleno));
+                listaFormas.add(new Triangulo(evt.getX(), evt.getY(),  jSlider1.getValue(), colorElegido, relleno, (int) jSpinner2.getValue()));
                 break;
             case 2:
                 listaFormas.add(new Cuadrado(evt.getX(), evt.getY(),  jSlider1.getValue(), colorElegido, relleno,(int) jSpinner2.getValue()));
                 break;
             case 3:
-                listaFormas.add(new Cruz(evt.getX(), evt.getY(),  jSlider1.getValue(), colorElegido, relleno));
+                listaFormas.add(new Cruz(evt.getX(), evt.getY(),  jSlider1.getValue(), colorElegido, relleno, (int) jSpinner2.getValue()));
                 break;
             case 4:
-                listaFormas.add(new Estrella(evt.getX(), evt.getY(),  jSlider1.getValue(), colorElegido, relleno));
+                listaFormas.add(new Estrella(evt.getX(), evt.getY(),  jSlider1.getValue(), colorElegido, relleno, (int) jSpinner2.getValue()));
                 break;
             case 6:
-                listaFormas.add(new Poligono(evt.getX(), evt.getY(),  jSlider1.getValue(), colorElegido, relleno, (int)jSpinner1.getValue()));
+                listaFormas.add(new Poligono(evt.getX(), evt.getY(),  jSlider1.getValue(), colorElegido, relleno, (int)jSpinner1.getValue(),(int) jSpinner2.getValue()));
                 break;
            
         }
@@ -693,22 +693,22 @@ public class VentanaDibujo extends javax.swing.JFrame {
         if(evt.getButton() == evt.BUTTON3){
         switch (forma) {
             case 0:
-                listaFormas.add(new Circulo(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido2, relleno));
+                listaFormas.add(new Circulo(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido2, relleno, (int) jSpinner2.getValue()));
                 break;
             case 1:
-                listaFormas.add(new Triangulo(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido2, relleno));
+                listaFormas.add(new Triangulo(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido2, relleno, (int) jSpinner2.getValue()));
                 break;
             case 2:
                 listaFormas.add(new Cuadrado(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido2, relleno, (int) jSpinner2.getValue()));
                 break;
             case 3:
-                listaFormas.add(new Cruz(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido2, relleno));
+                listaFormas.add(new Cruz(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido2, relleno, (int) jSpinner2.getValue()));
                 break;
             case 4:
-                listaFormas.add(new Estrella(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido2, relleno));
+                listaFormas.add(new Estrella(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido2, relleno, (int) jSpinner2.getValue()));
                 break;
             case 6:
-                listaFormas.add(new Poligono(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido2, relleno, (int)jSpinner1.getValue()));
+                listaFormas.add(new Poligono(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido2, relleno, (int)jSpinner1.getValue(), (int) jSpinner2.getValue()));
                 break;
            
         }

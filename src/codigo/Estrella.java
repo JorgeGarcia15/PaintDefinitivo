@@ -7,9 +7,11 @@ además de su posición en la pantalla, si está relleno o no
 */
 package codigo;
  
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
+import java.awt.Stroke;
  
 /**
 *
@@ -19,8 +21,9 @@ public class Estrella extends Polygon {
  
     public Color color = null;
     public boolean relleno = false;
+    public Stroke contorno = null;
  
-    public Estrella(int _x, int _y, int _width, Color _color, boolean _relleno) {
+    public Estrella(int _x, int _y, int _width, Color _color, boolean _relleno, float _grosor) {
  
         
        
@@ -64,10 +67,13 @@ public class Estrella extends Polygon {
 
         this.color = _color;
         this.relleno = _relleno;
+        
+        contorno = new BasicStroke(_grosor);
  
     }
  
     public void pintaYColorea(Graphics2D g2) {
+        g2.setStroke(contorno);
         g2.setColor(this.color);
         if (this.relleno) {
             g2.fill(this);

@@ -23,7 +23,7 @@ public class Cuadrado extends Polygon{
     public Color color = null;
     public boolean relleno = false;
     public Stroke contorno = null;
-    final static float dash1[] = {10.0f};
+
     
     public Cuadrado (int _x, int _y, int _width,  Color _color, boolean _relleno, float _grosor){
 
@@ -43,9 +43,7 @@ public class Cuadrado extends Polygon{
         this.color = _color;
         this.relleno = _relleno;
         
-        contorno = new BasicStroke(_grosor,BasicStroke.CAP_BUTT,
-                        BasicStroke.JOIN_MITER,
-                        1.0f, dash1, 0.0f);
+        contorno = new BasicStroke(_grosor);
         
     }
         public void pintaYColorea(Graphics2D g2){
