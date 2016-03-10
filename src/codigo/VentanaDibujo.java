@@ -53,6 +53,7 @@ public class VentanaDibujo extends javax.swing.JFrame {
     int posY = 0;
     
    boolean relleno = false;
+   boolean tipoRelleno = false;
    
    int numeroLados = 0;
 
@@ -177,6 +178,7 @@ public class VentanaDibujo extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jSpinner2 = new javax.swing.JSpinner();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
 
         jButton6.setText("ACEPTAR");
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -498,6 +500,13 @@ public class VentanaDibujo extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox2.setText("Degradado");
+        jCheckBox2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jCheckBox2MousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -535,7 +544,9 @@ public class VentanaDibujo extends javax.swing.JFrame {
                                         .addComponent(jLabel1))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(53, 53, 53)
-                                        .addComponent(jCheckBox1)))
+                                        .addComponent(jCheckBox1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jCheckBox2)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(83, 83, 83)
@@ -596,7 +607,9 @@ public class VentanaDibujo extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox1)
+                            .addComponent(jCheckBox2)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1058,6 +1071,15 @@ public class VentanaDibujo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCheckBox1MousePressed
 
+    private void jCheckBox2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox2MousePressed
+        if(jCheckBox1.isSelected()){
+        tipoRelleno = false;
+        }
+        if(!jCheckBox1.isSelected()){
+        tipoRelleno = true;
+        }
+    }//GEN-LAST:event_jCheckBox2MousePressed
+
     /**
          * @param args the command line arguments
          */
@@ -1110,6 +1132,7 @@ public class VentanaDibujo extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;

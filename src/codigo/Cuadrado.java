@@ -10,6 +10,7 @@ package codigo;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.GradientPaint;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Stroke;
@@ -22,7 +23,9 @@ public class Cuadrado extends Polygon{
     
     public Color color = null;
     public boolean relleno = false;
+     public boolean tipoRelleno = false;
     public Stroke contorno = null;
+    public GradientPaint degradado = null;
 
     
     public Cuadrado (int _x, int _y, int _width,  Color _color, boolean _relleno, float _grosor){
@@ -42,17 +45,26 @@ public class Cuadrado extends Polygon{
         
         this.color = _color;
         this.relleno = _relleno;
+//        this.tipoRelleno = _tipoRelleno;
         
-        contorno = new BasicStroke(_grosor);
+//        contorno = new BasicStroke(_grosor);
+       degradado = new GradientPaint(_x,_y,_color,_x+_width, _y,color.WHITE);
         
     }
         public void pintaYColorea(Graphics2D g2){
-            g2.setStroke(contorno);
+            
+            g2.setPaint(degradado);
+            
             g2.setColor(this.color);
             if (this.relleno) {
+                
+               
                 g2.fill(this);
+                
+            
             } else {
                 g2.draw(this);
             }
+            
     }
 }
