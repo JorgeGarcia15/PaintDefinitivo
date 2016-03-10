@@ -8,6 +8,7 @@ además de su posición en la pantalla, si está relleno o no
  */
 package codigo;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
@@ -21,9 +22,10 @@ public class Cuadrado extends Polygon{
     
     public Color color = null;
     public boolean relleno = false;
-    public Stroke grosor = null;
+    public Stroke contorno = null;
+    final static float dash1[] = {10.0f};
     
-    public Cuadrado (int _x, int _y, int _width,  Color _color, boolean _relleno){
+    public Cuadrado (int _x, int _y, int _width,  Color _color, boolean _relleno, float _grosor){
 
         this.npoints = 4;
         this.xpoints[0] = _x - _width/2;
@@ -41,8 +43,13 @@ public class Cuadrado extends Polygon{
         this.color = _color;
         this.relleno = _relleno;
         
+        contorno = new BasicStroke(_grosor,BasicStroke.CAP_BUTT,
+                        BasicStroke.JOIN_MITER,
+                        1.0f, dash1, 0.0f);
+        
     }
         public void pintaYColorea(Graphics2D g2){
+            g2.setStroke(contorno);
             g2.setColor(this.color);
             if (this.relleno) {
                 g2.fill(this);
