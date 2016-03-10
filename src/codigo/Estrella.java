@@ -36,7 +36,7 @@ public class Estrella extends Polygon {
 //            addPoint((int)(_x - (Math.cos(0.628319)*_width) ) , _y );
 //            addPoint((int)(_x - Math.cos(0.628319)*_width ),(int)( _y -_width));
         
-            addPoint((int)(_x - Math.cos(0.628319)*_width-Math.cos(1.25664)*_width + Math.cos(0.628319)*_width+Math.cos(1.25664)*_width) , (int)(_y - Math.sin(1.25664)*_width) -_width);
+        addPoint((int)(_x - Math.cos(0.628319)*_width-Math.cos(1.25664)*_width + Math.cos(0.628319)*_width+Math.cos(1.25664)*_width) , (int)(_y - Math.sin(1.25664)*_width) -_width);
             addPoint((int)(_x + Math.cos(0.628319)*_width-Math.cos(1.25664)*_width) , (int)(_y - Math.sin(1.25664)*_width) );
             addPoint((int)(_x + Math.cos(0.628319)*_width-Math.cos(1.25664)*_width + (Math.cos(0.628319)*_width)) , (int)_y-_width );
             addPoint((int)(_x + (Math.cos(0.628319)*_width) ) , _y );

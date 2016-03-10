@@ -5,12 +5,10 @@
  */
 package codigo;
 
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
-import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -20,10 +18,8 @@ import java.util.ArrayList;
  */
 public class VentanaDibujo extends javax.swing.JFrame {
 
+    private static int DIMENSION_ARRAY = 8;
 
-   
-    
-    
     //imagen en la que pintaré los círculos
     //es una variable parecida a un Image pero acelerado
     BufferedImage buffer = null;
@@ -43,18 +39,12 @@ public class VentanaDibujo extends javax.swing.JFrame {
 
     //variable para almacenar el color elegido
     Color colorElegido = Color.BLACK;
-    Color colorElegido2 = Color.BLACK;
-    
-    boolean color1 = false;
-    boolean color2 = false;
 
     //variable para alamcenar la posicion en la que se empieza a dibujar la forma 
     int posX = 0;
     int posY = 0;
     
    boolean proporcional = false;
-   
-   int numeroLados = 0;
 
     /**
      * Creates new form VentanaDibujo
@@ -70,9 +60,7 @@ public class VentanaDibujo extends javax.swing.JFrame {
         //dibujo un cuadrado blanco del tamaño del buffer
         g2.setColor(Color.white);
         g2.fillRect(0, 0, jPanel1.getWidth(), jPanel1.getHeight());
-        
-        jLabel4.setBackground(colorElegido);
-        jLabel2.setBackground(colorElegido2);
+
     }
 
     private boolean chequeaPunto(int x, int y) {
@@ -113,12 +101,6 @@ public class VentanaDibujo extends javax.swing.JFrame {
             if (listaFormas.get(i) instanceof Estrella) {
                 ((Estrella) listaFormas.get(i)).pintaYColorea(g2);
             }
-            if (listaFormas.get(i) instanceof Poligono) {
-                ((Poligono) listaFormas.get(i)).pintaYColorea(g2);
-            }
-             if (listaFormas.get(i) instanceof pincel) {
-                ((pincel) listaFormas.get(i)).pintaYColorea(g2);
-            }
         }
         //apunto al jPanel
         g2 = (Graphics2D) jPanel1.getGraphics();
@@ -138,11 +120,6 @@ public class VentanaDibujo extends javax.swing.JFrame {
         jColorChooser1 = new javax.swing.JColorChooser();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jDialog2 = new javax.swing.JDialog();
-        jFileChooser1 = new javax.swing.JFileChooser();
-        jToolBar1 = new javax.swing.JToolBar();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -154,26 +131,6 @@ public class VentanaDibujo extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
 
         jButton6.setText("ACEPTAR");
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -183,20 +140,6 @@ public class VentanaDibujo extends javax.swing.JFrame {
         });
 
         jButton7.setText("CANCELAR");
-
-        jButton14.setText("Color1");
-        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton14MousePressed(evt);
-            }
-        });
-
-        jButton15.setText("Color2");
-        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton15MousePressed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -208,14 +151,10 @@ public class VentanaDibujo extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(115, 115, 115)
-                        .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(158, 158, 158)
+                        .addComponent(jButton6)
+                        .addGap(97, 97, 97)
+                        .addComponent(jButton7)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDialog1Layout.setVerticalGroup(
@@ -225,27 +164,10 @@ public class VentanaDibujo extends javax.swing.JFrame {
                 .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6)
                     .addComponent(jButton7))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
-        jDialog2.getContentPane().setLayout(jDialog2Layout);
-        jDialog2Layout.setHorizontalGroup(
-            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jFileChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
-        );
-        jDialog2Layout.setVerticalGroup(
-            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jFileChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
-        );
-
-        jToolBar1.setRollover(true);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -265,21 +187,16 @@ public class VentanaDibujo extends javax.swing.JFrame {
                 jPanel1MouseReleased(evt);
             }
         });
-        jPanel1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jPanel1KeyPressed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 574, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 482, Short.MAX_VALUE)
+            .addGap(0, 454, Short.MAX_VALUE)
         );
 
         jButton1.setText("DESHACER");
@@ -353,276 +270,59 @@ public class VentanaDibujo extends javax.swing.JFrame {
             }
         });
 
-        jButton11.setText("Linea");
-        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton11MousePressed(evt);
-            }
-        });
-
-        jSpinner1.setValue(5);
-
-        jButton12.setText("Poligono");
-        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton12MousePressed(evt);
-            }
-        });
-
-        jButton13.setText("Borrador");
-        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton13MousePressed(evt);
-            }
-        });
-
-        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setOpaque(true);
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Color 1");
-
-        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel4.setOpaque(true);
-
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Color 2");
-
-        jLabel6.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel6.setOpaque(true);
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel6MousePressed(evt);
-            }
-        });
-
-        jLabel7.setBackground(java.awt.Color.gray);
-        jLabel7.setOpaque(true);
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel7MousePressed(evt);
-            }
-        });
-
-        jLabel8.setBackground(java.awt.Color.pink);
-        jLabel8.setOpaque(true);
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel8MousePressed(evt);
-            }
-        });
-
-        jLabel9.setBackground(java.awt.Color.red);
-        jLabel9.setOpaque(true);
-        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel9MousePressed(evt);
-            }
-        });
-
-        jLabel10.setBackground(java.awt.Color.orange);
-        jLabel10.setOpaque(true);
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel10MousePressed(evt);
-            }
-        });
-
-        jLabel11.setBackground(java.awt.Color.yellow);
-        jLabel11.setOpaque(true);
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel11MousePressed(evt);
-            }
-        });
-
-        jLabel12.setBackground(java.awt.Color.green);
-        jLabel12.setOpaque(true);
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel12MousePressed(evt);
-            }
-        });
-
-        jLabel13.setBackground(java.awt.Color.magenta);
-        jLabel13.setOpaque(true);
-        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel13MousePressed(evt);
-            }
-        });
-
-        jLabel14.setBackground(java.awt.Color.cyan);
-        jLabel14.setOpaque(true);
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel14MousePressed(evt);
-            }
-        });
-
-        jLabel15.setBackground(java.awt.Color.blue);
-        jLabel15.setOpaque(true);
-        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel15MousePressed(evt);
-            }
-        });
-
-        jLabel16.setBackground(java.awt.Color.darkGray);
-        jLabel16.setOpaque(true);
-        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel16MousePressed(evt);
-            }
-        });
-
-        jLabel17.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel17.setOpaque(true);
-        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel17MousePressed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton11)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
-                    .addComponent(jButton13)
-                    .addComponent(jButton10))
-                .addGap(41, 41, 41)
+                .addGap(6, 6, 6)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(83, 83, 83)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(82, 82, 82)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton5)))
-                        .addContainerGap(20, Short.MAX_VALUE))))
+                        .addComponent(jButton9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton5)
+                    .addComponent(jButton10))
+                .addGap(35, 35, 35)
+                .addComponent(jButton2)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5)))
-                    .addComponent(jButton5)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))))
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(23, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton9)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)
-                        .addGap(18, 18, 18)
                         .addComponent(jButton4)
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton8)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton13)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton11)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton10)
-                        .addGap(46, 46, 46))))
+                        .addComponent(jButton3)
+                        .addComponent(jButton2)
+                        .addComponent(jButton5))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton8)
+                    .addComponent(jButton9)
+                    .addComponent(jButton10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -632,57 +332,26 @@ public class VentanaDibujo extends javax.swing.JFrame {
 
         posX = evt.getX();
         posY = evt.getY();
-        if(evt.getButton() == evt.BUTTON1){
+        
         switch (forma) {
             case 0:
-                listaFormas.add(new Circulo(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido, true));
+                listaFormas.add(new Circulo(evt.getX(), evt.getY(), 1, colorElegido, true));
                 break;
             case 1:
-                listaFormas.add(new Triangulo(evt.getX(), evt.getY(),  jSlider1.getValue(), colorElegido, true));
+                listaFormas.add(new Triangulo(evt.getX(), evt.getY(), 1, colorElegido, true));
                 break;
             case 2:
-                listaFormas.add(new Cuadrado(evt.getX(), evt.getY(),  jSlider1.getValue(), colorElegido, true));
+                listaFormas.add(new Cuadrado(evt.getX(), evt.getY(), 1, colorElegido, true));
                 break;
             case 3:
-                listaFormas.add(new Cruz(evt.getX(), evt.getY(),  jSlider1.getValue(), colorElegido, true));
+                listaFormas.add(new Cruz(evt.getX(), evt.getY(), 1, colorElegido, true));
                 break;
             case 4:
-                listaFormas.add(new Estrella(evt.getX(), evt.getY(),  jSlider1.getValue(), colorElegido, true));
+                listaFormas.add(new Estrella(evt.getX(), evt.getY(), 1, colorElegido, true));
                 break;
-            case 6:
-                listaFormas.add(new Poligono(evt.getX(), evt.getY(),  jSlider1.getValue(), colorElegido, true, (int)jSpinner1.getValue()));
-                break;
-           
-        }
-        repaint(1,1,1,1);
-
-        }
-        if(evt.getButton() == evt.BUTTON3){
-        switch (forma) {
-            case 0:
-                listaFormas.add(new Circulo(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido2, true));
-                break;
-            case 1:
-                listaFormas.add(new Triangulo(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido2, true));
-                break;
-            case 2:
-                listaFormas.add(new Cuadrado(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido2, true));
-                break;
-            case 3:
-                listaFormas.add(new Cruz(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido2, true));
-                break;
-            case 4:
-                listaFormas.add(new Estrella(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido2, true));
-                break;
-            case 6:
-                listaFormas.add(new Poligono(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido2, true, (int)jSpinner1.getValue()));
-                break;
-           
         }
         repaint();
 
-        }
-        
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
@@ -721,16 +390,8 @@ public class VentanaDibujo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5MousePressed
 
     private void jButton6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MousePressed
-        if(color1){
         colorElegido = jColorChooser1.getColor();
         jDialog1.setVisible(false);
-        jLabel4.setBackground(colorElegido);
-        }
-        if(color2){
-        colorElegido2 = jColorChooser1.getColor();
-        jDialog1.setVisible(false);
-        jLabel2.setBackground(colorElegido2);
-        }
     }//GEN-LAST:event_jButton6MousePressed
 
     private void jButton8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MousePressed
@@ -749,10 +410,26 @@ public class VentanaDibujo extends javax.swing.JFrame {
         if (chequeaPunto(evt.getX(), evt.getY())) {
             //hay un elemento en esas coordenadas en las que he hecho clic
             System.out.println("HAY UN OBJETO!!!");
-            
+        } else {
+            switch (forma) {
+                case 0:
+                    listaFormas.add(new Circulo(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido, true));
+                    break;
+                case 1:
+                    listaFormas.add(new Triangulo(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido, true));
+                    break;
+                case 2:
+                    listaFormas.add(new Cuadrado(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido, true));
+                    break;
+                case 3:
+                    listaFormas.add(new Cruz(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido, true));
+                    break;
+                case 4:
+                    listaFormas.add(new Estrella(evt.getX(), evt.getY(), jSlider1.getValue(), colorElegido, true));
+                    break;
+            }
 
-
-            repaint(1,1,1,1);
+            repaint();
         }
     }//GEN-LAST:event_jPanel1MouseClicked
 
@@ -760,47 +437,19 @@ public class VentanaDibujo extends javax.swing.JFrame {
         switch (forma) {
             case 0: {
                 Circulo aux = (Circulo) listaFormas.get(listaFormas.size() - 1);
-                        
-                        if(posX<evt.getX() && posY<evt.getY() ){  
-                        aux.x = posX;  
-                        aux.width = evt.getX()-posX;
-                        aux.height = aux.width;
-                        } 
-                        
-                        if(posX>evt.getX() && posY<evt.getY() ){
-                        aux.x = evt.getX();
-                        aux.width = posX-evt.getX();
-                        aux.height = aux.width;
-                           
-                        }
-                        
-                        if(posX>evt.getX() && posY>evt.getY() ){
-                        aux.x = evt.getX();  
-                        aux.y = evt.getX();
-                        aux.width = posX-evt.getX();
-                        aux.height = aux.width;
-                           
-                        }
-                        
-                         if(posX<evt.getX() && posY>evt.getY() ){
-                        aux.x = posX;  
-                        aux.y = posX;
-                        aux.width = evt.getX()-posX;
-                        aux.height = aux.width;
-                           
-                        }
+                        int radio = (int) (evt.getX() - aux.x);
+                        aux.width = posX;
+                        aux.height = posX + evt.getX();
             } break;
                 case 1: {
                 Triangulo aux = (Triangulo) listaFormas.get(listaFormas.size() - 1);
-               
-                        aux.xpoints[0] = posX ;
-                        aux.ypoints[0] = posY ; 
-
-                        aux.xpoints[1] = posX + (evt.getX()-posX)/2;
-                        aux.ypoints[1] = posY + (evt.getY()-posY)/2;
-            
-                        aux.xpoints[2] = posX - (evt.getX()-posX)/2;
-                        aux.ypoints[2] = posY + (evt.getY()-posY)/2;
+                        
+                        aux.xpoints[0] = posX;
+                        aux.ypoints[0] = posY;
+                        aux.xpoints[1] = aux.xpoints[0] + evt.getX()/2;
+                        aux.ypoints[1] = aux.ypoints[0]+ evt.getY();
+                        aux.xpoints[2] = aux.xpoints[1]-evt.getX();
+                        aux.ypoints[2] = aux.ypoints[1];
                         
                         
                         
@@ -810,211 +459,23 @@ public class VentanaDibujo extends javax.swing.JFrame {
             case 2: {
                 Cuadrado aux = (Cuadrado) listaFormas.get(listaFormas.size() - 1);
                 
-                        aux.xpoints[0] = posX;
-                        aux.ypoints[0] = posY;
-                        
-                        aux.xpoints[1] = aux.xpoints[0];   
-                        aux.ypoints[1] = aux.ypoints[0]+ evt.getY();
-                        
-                        aux.xpoints[2] = aux.xpoints[1]+ evt.getX();
-                        aux.ypoints[2] = aux.ypoints[1];
-                        
-                        aux.xpoints[3] = aux.xpoints[2];
-                        aux.ypoints[3] = aux.ypoints[2]-evt.getY();
+                int radioX = (int) (evt.getX() - aux.x);
+                   int radioY = (int) (evt.getY() - aux.y);
+                        aux.width = radioX;
+                        aux.height = radioY;
+                
+                
                         
             } break;    
 //       } = shape forma = (shape) listaFormas.get(listaFormas.size()-1)
-             case 5: {
-                Graphics2D g2 = (Graphics2D) buffer.getGraphics();
-                // draw Line2D.Double
-                g2.draw(new Line2D.Double(posX, posY, evt.getX(), evt.getY()));
-                
-                g2 = (Graphics2D) jPanel1.getGraphics();
-                g2.drawImage(buffer, 0, 0, jPanel1.getWidth(), jPanel1.getHeight(), null);
-               
-            } break; 
-                 
-                 case 7: {
-                     Graphics2D g2 = (Graphics2D) buffer.getGraphics();
-                 listaFormas.add(new pincel(evt.getX(), evt.getY(), jSlider1.getValue(), Color.white, true,g2));
-                 
-            } break; 
         }
-        
-        
-        
-        
-         
-        repaint(1,1,1,1);
-        
-                 
+        repaint();
     }//GEN-LAST:event_jPanel1MouseDragged
 
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
         posX = evt.getX();
         posY = evt.getY();
     }//GEN-LAST:event_jPanel1MouseReleased
-
-    private void jPanel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel1KeyPressed
-     
-    }//GEN-LAST:event_jPanel1KeyPressed
-
-    private void jButton11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MousePressed
-        forma = 5;
-    }//GEN-LAST:event_jButton11MousePressed
-
-    private void jButton12MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MousePressed
-        // TODO add your handling code here:
-        forma = 6;
-    }//GEN-LAST:event_jButton12MousePressed
-
-    private void jButton13MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MousePressed
-        // TODO add your handling code here:
-        forma=7;
-    }//GEN-LAST:event_jButton13MousePressed
-
-    private void jLabel6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MousePressed
-        if(evt.getButton() == evt.BUTTON1){
-            colorElegido = jLabel6.getBackground();
-            jLabel4.setBackground(colorElegido);
-        }
-        if(evt.getButton() == evt.BUTTON3){
-            colorElegido2 = jLabel6.getBackground();
-            jLabel2.setBackground(colorElegido);
-        }
-        
-    }//GEN-LAST:event_jLabel6MousePressed
-
-    private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
-         if(evt.getButton() == evt.BUTTON1){
-            colorElegido = jLabel7.getBackground();
-            jLabel4.setBackground(colorElegido);
-        }
-        if(evt.getButton() == evt.BUTTON3){
-            colorElegido2 = jLabel7.getBackground();
-            jLabel2.setBackground(colorElegido2);
-        }
-    }//GEN-LAST:event_jLabel7MousePressed
-
-    private void jButton14MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MousePressed
-        color1 = true;
-        color2 = false;
-    }//GEN-LAST:event_jButton14MousePressed
-
-    private void jButton15MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MousePressed
-        color2 = true;
-        color1 = false;
-    }//GEN-LAST:event_jButton15MousePressed
-
-    private void jLabel8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MousePressed
-          if(evt.getButton() == evt.BUTTON1){
-            colorElegido = jLabel8.getBackground();
-            jLabel4.setBackground(colorElegido);
-        }
-        if(evt.getButton() == evt.BUTTON3){
-            colorElegido2 = jLabel8.getBackground();
-            jLabel2.setBackground(colorElegido2);
-        }
-    }//GEN-LAST:event_jLabel8MousePressed
-
-    private void jLabel9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MousePressed
-          if(evt.getButton() == evt.BUTTON1){
-            colorElegido = jLabel9.getBackground();
-            jLabel4.setBackground(colorElegido);
-        }
-        if(evt.getButton() == evt.BUTTON3){
-            colorElegido2 = jLabel9.getBackground();
-            jLabel2.setBackground(colorElegido2);
-        }
-    }//GEN-LAST:event_jLabel9MousePressed
-
-    private void jLabel10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MousePressed
-          if(evt.getButton() == evt.BUTTON1){
-            colorElegido = jLabel10.getBackground();
-            jLabel4.setBackground(colorElegido);
-        }
-        if(evt.getButton() == evt.BUTTON3){
-            colorElegido2 = jLabel10.getBackground();
-            jLabel2.setBackground(colorElegido2);
-        }
-    }//GEN-LAST:event_jLabel10MousePressed
-
-    private void jLabel11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MousePressed
-          if(evt.getButton() == evt.BUTTON1){
-            colorElegido = jLabel11.getBackground();
-            jLabel4.setBackground(colorElegido);
-        }
-        if(evt.getButton() == evt.BUTTON3){
-            colorElegido2 = jLabel11.getBackground();
-            jLabel2.setBackground(colorElegido2);
-        }
-    }//GEN-LAST:event_jLabel11MousePressed
-
-    private void jLabel12MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MousePressed
-          if(evt.getButton() == evt.BUTTON1){
-            colorElegido = jLabel12.getBackground();
-            jLabel4.setBackground(colorElegido);
-        }
-        if(evt.getButton() == evt.BUTTON3){
-            colorElegido2 = jLabel12.getBackground();
-            jLabel2.setBackground(colorElegido2);
-        }
-    }//GEN-LAST:event_jLabel12MousePressed
-
-    private void jLabel13MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MousePressed
-          if(evt.getButton() == evt.BUTTON1){
-            colorElegido = jLabel13.getBackground();
-            jLabel4.setBackground(colorElegido);
-        }
-        if(evt.getButton() == evt.BUTTON3){
-            colorElegido2 = jLabel13.getBackground();
-            jLabel2.setBackground(colorElegido2);
-        }
-    }//GEN-LAST:event_jLabel13MousePressed
-
-    private void jLabel14MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MousePressed
-          if(evt.getButton() == evt.BUTTON1){
-            colorElegido = jLabel14.getBackground();
-            jLabel4.setBackground(colorElegido);
-        }
-        if(evt.getButton() == evt.BUTTON3){
-            colorElegido2 = jLabel14.getBackground();
-            jLabel2.setBackground(colorElegido2);
-        }
-    }//GEN-LAST:event_jLabel14MousePressed
-
-    private void jLabel15MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MousePressed
-         if(evt.getButton() == evt.BUTTON1){
-            colorElegido = jLabel15.getBackground();
-            jLabel4.setBackground(colorElegido);
-        }
-        if(evt.getButton() == evt.BUTTON3){
-            colorElegido2 = jLabel15.getBackground();
-            jLabel2.setBackground(colorElegido2);
-        }
-    }//GEN-LAST:event_jLabel15MousePressed
-
-    private void jLabel16MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MousePressed
-         if(evt.getButton() == evt.BUTTON1){
-            colorElegido = jLabel16.getBackground();
-            jLabel4.setBackground(colorElegido);
-        }
-        if(evt.getButton() == evt.BUTTON3){
-            colorElegido2 = jLabel16.getBackground();
-            jLabel2.setBackground(colorElegido2);
-        }
-    }//GEN-LAST:event_jLabel16MousePressed
-
-    private void jLabel17MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MousePressed
-        if(evt.getButton() == evt.BUTTON1){
-            colorElegido = jLabel17.getBackground();
-            jLabel4.setBackground(colorElegido);
-        }
-        if(evt.getButton() == evt.BUTTON3){
-            colorElegido2 = jLabel17.getBackground();
-            jLabel2.setBackground(colorElegido2);
-        }
-    }//GEN-LAST:event_jLabel17MousePressed
 
     /**
          * @param args the command line arguments
@@ -1054,11 +515,6 @@ public class VentanaDibujo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1069,28 +525,8 @@ public class VentanaDibujo extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JDialog jDialog1;
-    private javax.swing.JDialog jDialog2;
-    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSlider jSlider1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }
